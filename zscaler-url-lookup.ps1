@@ -76,8 +76,8 @@ while ($line -le $InputFilename.Length) {
     $url2 = $url1 -join ("")
     $urllist = $url2 -replace ",]","]"
     $newbody = $Body | convertTo-Json
-    $new = Invoke-WebRequest -Method POST "https://zsapi.zscalerthree.net/api/v1/authenticatedSession" -ContentType 'application/json' -Body $newbody -SessionVariable Session
-    $newurl = Invoke-WebRequest -Method POST "https://zsapi.zscalerthree.net/api/v1/urlLookup" -Body $urllist -ContentType 'application/json' -WebSession $Session
+    $new = Invoke-WebRequest -Method POST "https://$server/api/v1/authenticatedSession" -ContentType 'application/json' -Body $newbody -SessionVariable Session
+    $newurl = Invoke-WebRequest -Method POST "https://$server/api/v1/urlLookup" -Body $urllist -ContentType 'application/json' -WebSession $Session
     $newurl | convertFrom-json
     rm .\url-list.txt
     Start-Sleep -s 2
@@ -93,8 +93,8 @@ else {
     $url2 = $url1 -join ("")
     $urllist = $url2 -replace ",]","]"
     $newbody = $Body | convertTo-Json
-    $new = Invoke-WebRequest -Method POST "https://zsapi.zscalerthree.net/api/v1/authenticatedSession" -ContentType 'application/json' -Body $newbody -SessionVariable Session
-    $newurl = Invoke-WebRequest -Method POST "https://zsapi.zscalerthree.net/api/v1/urlLookup" -Body $urllist -ContentType 'application/json' -WebSession $Session
+    $new = Invoke-WebRequest -Method POST "https://$server/api/v1/authenticatedSession" -ContentType 'application/json' -Body $newbody -SessionVariable Session
+    $newurl = Invoke-WebRequest -Method POST "https://$server/api/v1/urlLookup" -Body $urllist -ContentType 'application/json' -WebSession $Session
     $newurl | convertFrom-json
     rm .\url-list.txt
 }
