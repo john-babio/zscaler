@@ -1,3 +1,7 @@
+[System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12,
+[Net.SecurityProtocolType]::Tls11
+
 $seed = "apikey"
 #Run script from the same folder that your urls are located in. File should be called urls.txt
 # If using a new enough .NET version (4.6+) you can do this
